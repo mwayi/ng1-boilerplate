@@ -1,0 +1,79 @@
+@mixin x-border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin x-transform($var) {
+  -webkit-transform: $var;
+  	  -ms-transform: $var;
+       -o-transform: $var;
+          transform: $var;
+}
+@mixin x-transition($var) {
+  -webkit-transition: $var;
+  	   -o-transition: $var;
+          transition: $var;
+}
+
+@mixin x-transparency($var) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+}
+
+@mixin x-box-shadow($var) {
+   -moz-box-shadow: $var;
+-webkit-box-shadow: $var;
+	    box-shadow: $var;
+}
+
+@mixin x-transition-all($var) {
+  -moz-transition: all $var;
+      -webkit-transition: all $var;
+      transition: all $var;
+}
+@mixin x-inline-block {
+	display: inline-block; /* For normal, healthy browsers */
+
+	* html & { /* for IE6 */
+		display: inline;
+	}
+
+	*+html & { /* for IE7 */
+		display: inline;
+	}
+}
+
+/**
+ * MEDIA QUERY MIXINS 
+ */
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin phone {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin not-phone {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
